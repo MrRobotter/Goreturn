@@ -6,11 +6,17 @@
     <color name="titleColor">#ede5e5</color>
     <color name="white">#FFFFFFFF</color>
     <color name="textColorPrimary">#00C188</color>
+    <color name="mineBg">#00c4a3</color>
+    <color name="tagsBg">#68DAB7</color>
     <color name="textColorNormal">#999999</color>
     <color name="colorNormal">#F6F6F6</color>
+    <color name="text666">#666666</color>
     <color name="colorTip">#333333</color>
     <color name="textGray">#999999</color>
     <color name="textTitle">#0F0F0F</color>
     <color name="textBlack">#000000</color>
     <color name="titleLine">#DEDEDE</color>
+    <color name="textHot">#5E5E5E</color>
+    <color name="searchBg">#E5E5E5</color>
+    <color name="confirmColor">#F8821C</color>
 </resources>

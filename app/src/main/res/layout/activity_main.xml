@@ -8,16 +8,23 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="40dp"
+        android:background="@color/white">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp"
-            android:src="@mipmap/icon_scan" />
+        <RelativeLayout
+            android:id="@+id/rlScanCode"
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_scan" />
+
+        </RelativeLayout>
+
 
         <TextView
             android:id="@+id/tvUser"
@@ -55,7 +62,9 @@
         <FrameLayout
             android:id="@+id/mainTabContent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></FrameLayout>
+            android:layout_height="match_parent">
+
+        </FrameLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -92,10 +101,10 @@
                         android:src="@drawable/tab_business" />
 
                     <TextView
-                        android:layout_marginTop="3dp"
-
                         android:layout_width="wrap_content"
+
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
                         android:text="业务"
                         android:textColor="@drawable/tab_text_color"
                         android:textSize="@dimen/sp_12" />
@@ -117,10 +126,10 @@
                         android:src="@drawable/tab_contacts" />
 
                     <TextView
-                        android:layout_marginTop="3dp"
-
                         android:layout_width="wrap_content"
+
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
                         android:text="交流"
                         android:textColor="@drawable/tab_text_color"
                         android:textSize="@dimen/sp_12" />
@@ -150,8 +159,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="服务"
                         android:layout_marginTop="3dp"
+                        android:text="服务"
                         android:textColor="@drawable/tab_text_color"
                         android:textSize="@dimen/sp_12" />
                 </LinearLayout>
@@ -173,10 +182,10 @@
                         android:src="@drawable/tab_mine" />
 
                     <TextView
-                        android:layout_marginTop="3dp"
-
                         android:layout_width="wrap_content"
+
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
                         android:text="我的"
                         android:textColor="@drawable/tab_text_color"
                         android:textSize="@dimen/sp_12" />
@@ -185,12 +194,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_alignParentBottom="true"
                 android:layout_width="wrap_content"
                 android:layout_height="65dp"
+                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:clickable="true"
+                android:focusable="true"
                 android:orientation="vertical">
 
                 <ImageView
@@ -208,8 +217,6 @@
                     android:textColor="@drawable/tab_add_color"
                     android:textSize="@dimen/sp_12" />
             </LinearLayout>
-
-
         </RelativeLayout>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -109,10 +109,24 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
             if (bean.getResultCode().equals("2")) {
                 ToastUtils.showShortToast(mContext, "手机号码或密码错误");
             } else if (bean.getResultCode().equals("1")) {
-                ToastUtils.showShortToast(mContext, "成功!");
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                //ToastUtils.showShortToast(mContext, "成功!");
+                String zcbz = bean.getZCBZ();
+                if (zcbz.equals("1")) {//1-填写基本信息
+                    Intent intent = new Intent(this, BaseInfoActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                } else if (zcbz.equals("2")) {//2-填写业务信息
+                    Intent intent = new Intent(this, BusinessInfoActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                } else if (zcbz.equals("3") || zcbz.equals("4") || zcbz.equals("5")) {//3-上传名片
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             } else if (bean.getResultCode().equals("4")) {
                 ToastUtils.showShortToast(mContext, "处理过程异常!");
             }

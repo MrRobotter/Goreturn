@@ -2,6 +2,7 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -42,24 +43,23 @@
                 android:textColor="@color/textTitle"
                 android:textSize="18sp" />
 
-            <RelativeLayout
-                android:layout_width="@dimen/title_bar_height"
-                android:layout_height="@dimen/title_bar_height"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:onClick="skip">
+            <!--<RelativeLayout-->
+            <!--android:layout_width="@dimen/title_bar_height"-->
+            <!--android:layout_height="@dimen/title_bar_height"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:onClick="skip">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:clickable="false"
-                    android:text="跳过"
-                    android:textColor="@color/textTitle"
-                    android:textSize="15sp" />
-            </RelativeLayout>
-
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:clickable="false"-->
+            <!--android:text="跳过"-->
+            <!--android:textColor="@color/textTitle"-->
+            <!--android:textSize="15sp" />-->
+            <!--</RelativeLayout>-->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
@@ -242,6 +242,8 @@
                         android:layout_height="50dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
+                        android:gravity="center_vertical"
+                        android:onClick="btnAddress"
                         android:orientation="horizontal">
 
                         <TextView
@@ -250,16 +252,15 @@
                             android:text="所在城市"
                             android:textSize="15sp" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/etCity"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="12dp"
                             android:layout_toRightOf="@id/user_icon"
                             android:layout_weight="1"
                             android:background="@null"
                             android:hint="请选择"
-                            android:inputType="textEmailAddress"
                             android:textColor="@color/black"
                             android:textColorHint="@color/textColorNormal"
                             android:textCursorDrawable="@drawable/color_cursor"
@@ -407,6 +408,7 @@
                         android:layout_height="50dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
@@ -418,7 +420,7 @@
                         <EditText
                             android:id="@+id/etDepartment"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="12dp"
                             android:layout_toRightOf="@id/user_icon"
                             android:background="@null"
@@ -483,6 +485,9 @@
                         android:layout_height="50dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:onClick="openDrawer"
                         android:orientation="horizontal">
 
                         <TextView
@@ -491,10 +496,10 @@
                             android:text="单位类别"
                             android:textSize="15sp" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/edCategory"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="12dp"
                             android:layout_toRightOf="@id/user_icon"
                             android:layout_weight="1"
@@ -502,6 +507,7 @@
                             android:hint="请选择单位类别"
                             android:inputType="text"
                             android:maxLength="11"
+                            android:onClick="openDrawer"
                             android:textColor="@color/black"
                             android:textColorHint="@color/textColorNormal"
                             android:textCursorDrawable="@drawable/color_cursor"
@@ -512,10 +518,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:src="@mipmap/icon_skip" />
-
-
                     </LinearLayout>
-
 
                 </LinearLayout>
 
@@ -536,11 +539,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:clickable="true"
         android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:background="@color/colorPrimary"
+        android:clickable="true"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -592,11 +595,11 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_weight="1"
-                android:text="重置"
-                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="重置"
                 android:textColor="@color/textTitle"
                 android:textSize="16sp" />
 
@@ -606,19 +609,15 @@
                 android:background="#dddddd" />
 
             <TextView
-                android:gravity="center"
-                android:background="@color/textColorPrimary"
-                android:text="确定"
-                android:textSize="16sp"
-                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-
+                android:layout_weight="1"
+                android:background="@color/textColorPrimary"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
         </LinearLayout>
-
-
     </LinearLayout>
 
 

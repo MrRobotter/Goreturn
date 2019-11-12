@@ -2,14 +2,21 @@ package com.joinyon.houge.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.joinyon.houge.MainActivity;
 import com.joinyon.houge.R;
+import com.joinyon.houge.activity.MyQRcodeActivity;
+import com.joinyon.houge.activity.ScanActivity;
+import com.joinyon.houge.activity.SearchActivity;
 import com.joinyon.houge.adapter.BusinessAdapter;
 import com.joinyon.houge.fragment.sub.CapitalFragment;
 import com.joinyon.houge.widget.ScaleTransitionPagerTitleView;
@@ -30,13 +37,16 @@ import java.util.List;
 
 /**
  */
-public class BusinessFragment extends BaseFragment {
+public class BusinessFragment extends BaseFragment implements View.OnClickListener {
     private MainActivity activity;
     private MagicIndicator magicIndicator;
     private ViewPager vp_content;
     public static final String[] BARGAIN_ARR = {"活动中(4)", "暂停(3)", "过期(15)"};
     private List<String> titleList = new ArrayList<>();
     private List<Fragment> fragmentList = new ArrayList<>();//碎片集合
+    private ImageView ivScanCode, imageQR;
+    private RelativeLayout rlSearch;
+    private TextView tvName;
 
 
     public BusinessFragment() {
@@ -66,6 +76,14 @@ public class BusinessFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        imageQR = activity.findViewById(R.id.imageQR);
+        ivScanCode = activity.findViewById(R.id.ivScanCode);
+        rlSearch = activity.findViewById(R.id.rlSearch);
+
+        rlSearch.setOnClickListener(this);
+        ivScanCode.setOnClickListener(this);
+        imageQR.setOnClickListener(this);
+
         vp_content = activity.findViewById(R.id.vp_content);
         titleList.add("资金");
         titleList.add("项目");
@@ -126,4 +144,28 @@ public class BusinessFragment extends BaseFragment {
         ViewPagerHelper.bind(magicIndicator, vp_content);
     }
 
+    @Override
+    public void onClick(View view) {
+        Intent intent;
+        switch (view.getId()) {
+            case R.id.imageQR:
+                intent = new Intent(activity, MyQRcodeActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.ivScanCode:
+                intent = new Intent(activity, ScanActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.rlSearch:
+                intent = new Intent(activity, SearchActivity.class);
+                startActivity(intent);
+
+                break;
+            default:
+                break;
+
+        }
+    }
 }

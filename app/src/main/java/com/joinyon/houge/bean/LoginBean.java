@@ -20,10 +20,19 @@ public class LoginBean implements Serializable {
     private String APPUSER_ID;
     private String SJHM;
     private String YHLX;
+    private String ZCBZ;
     private String token;
 
     public String getResultCode() {
         return resultCode;
+    }
+
+    public String getZCBZ() {
+        return ZCBZ;
+    }
+
+    public void setZCBZ(String ZCBZ) {
+        this.ZCBZ = ZCBZ;
     }
 
     public void setResultCode(String resultCode) {
@@ -69,6 +78,7 @@ public class LoginBean implements Serializable {
                 ", APPUSER_ID='" + APPUSER_ID + '\'' +
                 ", SJHM='" + SJHM + '\'' +
                 ", YHLX='" + YHLX + '\'' +
+                ", ZCBZ='" + ZCBZ + '\'' +
                 ", token='" + token + '\'' +
                 '}';
     }

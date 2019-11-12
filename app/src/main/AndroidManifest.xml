@@ -15,6 +15,7 @@
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -27,21 +28,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".MainActivity">
+
         </activity>
         <activity
             android:name=".activity.LoadingActivity"
             android:theme="@style/AppTheme2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".activity.GuideActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity"></activity>
-        <activity android:name=".activity.BaseInfoActivity"></activity>
+        <activity android:name=".activity.BaseInfoActivity">
+
+        </activity>
         <activity android:name=".activity.BusinessInfoActivity">
 
         </activity>
@@ -55,6 +59,15 @@
 
         </activity>
         <activity android:name=".activity.FriendsIdentification">
+
+        </activity>
+        <activity
+            android:name=".activity.ScanActivity"
+            android:theme="@style/AppTheme2">
+        </activity>
+        <activity android:name=".activity.SearchActivity">
+        </activity>
+        <activity android:name=".activity.MyQRcodeActivity">
 
         </activity>
 

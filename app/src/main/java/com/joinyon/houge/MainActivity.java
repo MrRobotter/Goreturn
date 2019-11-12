@@ -3,6 +3,7 @@ package com.joinyon.houge;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,13 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
+import com.joinyon.houge.activity.ScanActivity;
 import com.joinyon.houge.mvp.contract.MainContract;
 import com.joinyon.houge.mvp.model.MainModel;
 import com.joinyon.houge.mvp.presenter.MainPresenter;
+import com.joinyon.houge.utils.StatusBarUtil;
 import com.xusangbo.basemoudle.base.BaseActivity;
 import com.xusangbo.basemoudle.utils.SystemBarTintManager;
+import com.xusangbo.basemoudle.utils.ToastUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -28,6 +34,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     private LinearLayout communication;
     private LinearLayout service;
     private LinearLayout mine;
+    private RelativeLayout rlScanCode;
 
     /**
      * 放主界面下面tab的view
@@ -63,8 +70,18 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
         mPresenter.initFragment(this, R.id.mainTabContent);
         setCheck(0);
         initColor();
+        rlScanCode = findViewById(R.id.rlScanCode);
+        rlScanCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
+                startActivity(intent);
+            }
+        });
         //setStatusBarLightMode(this,true);
         setStatusBarColor(this, R.color.white);
+
     }
 
     private void initColor() {
@@ -75,30 +92,33 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
             window.setStatusBarColor(getResources().getColor(R.color.white));
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         } else {
-          //  window.setStatusBarColor(getResources().getColor(R.color.white));
-          //  window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+            //  window.setStatusBarColor(getResources().getColor(R.color.white));
+            //  window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
         }
     }
-
 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.business:
                 mPresenter.switchFragment(0);
+                setLightMode();
                 setCheck(0);
-                //    setStatusBarLightMode(this,true);
-                //    setStatusBarColor(this,R.color.textColorNormal);
                 break;
             case R.id.communication:
                 mPresenter.switchFragment(1);
+                setLightMode();
                 setCheck(1);
                 break;
             case R.id.service:
-                mPresenter.switchFragment(2);
-                setCheck(2);
+                ToastUtils.showLongToast(this,"开发中……");
+//                mPresenter.switchFragment(2);
+//                setLightMode();
+//                setCheck(2);
                 break;
             case R.id.mine:
                 mPresenter.switchFragment(3);
+                //StatusBarUtil.transparencyBar(this);
+                setTransBar();
                 setCheck(3);
             default:
                 break;
@@ -333,6 +353,34 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
             }
         }
         return result;
+    }
+
+    private void setLightMode() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Window window = getWindow();
+            // 设置状态栏字体黑色
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
+
+    private void setTransBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+            window.setStatusBarColor(getResources().getColor(R.color.mineBg));
+        }
+    }
+
+    private void initStatusBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.textColorPrimary));
+        }
     }
 
 

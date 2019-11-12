@@ -1,1 +1,1 @@
-include ':app', ':HeavenlyModule', ':magicindicator'
+include ':app', ':HeavenlyModule', ':magicindicator', ':mywheelview'
