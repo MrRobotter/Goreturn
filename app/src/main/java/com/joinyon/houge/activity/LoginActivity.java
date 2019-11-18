@@ -20,6 +20,7 @@ import com.joinyon.houge.bean.LoginBean;
 import com.joinyon.houge.mvp.contract.LoginContract;
 import com.joinyon.houge.mvp.model.LoginModel;
 import com.joinyon.houge.mvp.presenter.LoginPresenter;
+import com.joinyon.houge.utils.SPHelper;
 import com.xusangbo.basemoudle.base.BaseActivity;
 import com.xusangbo.basemoudle.utils.ToastUtils;
 
@@ -110,12 +111,14 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
                 ToastUtils.showShortToast(mContext, "手机号码或密码错误");
             } else if (bean.getResultCode().equals("1")) {
                 //ToastUtils.showShortToast(mContext, "成功!");
+                SPHelper.setUid(bean.getAPPUSER_ID());
                 String zcbz = bean.getZCBZ();
+                SPHelper.setZCbz(zcbz);
+
                 if (zcbz.equals("1")) {//1-填写基本信息
                     Intent intent = new Intent(this, BaseInfoActivity.class);
                     startActivity(intent);
                     finish();
-
                 } else if (zcbz.equals("2")) {//2-填写业务信息
                     Intent intent = new Intent(this, BusinessInfoActivity.class);
                     startActivity(intent);

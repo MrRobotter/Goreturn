@@ -6,11 +6,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.joinyon.houge.MainActivity;
 import com.joinyon.houge.R;
 import com.joinyon.houge.utils.SPHelper;
 
@@ -64,14 +66,34 @@ public class LoadingActivity extends AppCompatActivity implements View.OnClickLi
                 String firstNum = SPHelper.getFirstIndex();
 
                 if (!firstNum.equals("1")) {
+                    SPHelper.setFirstIndex("1");//第一次登陆
                     //第一次
                     Intent intent = new Intent(LoadingActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    Intent intent = new Intent(LoadingActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
+                    String uid = SPHelper.getUid();
+                    if (TextUtils.isEmpty(uid)) {
+                        Intent intent = new Intent(LoadingActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        String zcbz = SPHelper.getZCbz();
+                        if (zcbz.equals("1")) {//1-填写基本信息
+                            Intent intent = new Intent(LoadingActivity.this, BaseInfoActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else if (zcbz.equals("2")) {//2-填写业务信息
+                            Intent intent = new Intent(LoadingActivity.this, BusinessInfoActivity.class);
+                            startActivity(intent);
+                            finish();
+
+                        } else if (zcbz.equals("3") || zcbz.equals("4") || zcbz.equals("5")) {//3-上传名片
+                            Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
                 }
             }
         }, 3000);

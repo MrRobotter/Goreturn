@@ -96,6 +96,15 @@ public class SPHelper {
         getInstance().editor.commit();
     }
 
+    public static void setZCbz(String zcbz) {
+        getInstance().editor.putString("ZCBZ", zcbz);
+        getInstance().editor.commit();
+    }
+
+    public static String getZCbz() {
+        return getInstance().settings.getString("ZCBZ", "");
+    }
+
     public static double getScaleRate_W() {
         return getInstance().settings.getFloat(scaleRate_W, 0.0f);
     }

@@ -22,12 +22,21 @@ public class ApiConstants {
 
     public static final String BASE_URL = "http://47.97.107.105/";
     public static final String IMAGE_URL = "https://coludkejia.cn/MysasPlatform";
+    //1.获取数据字典
+    public static final String GET_DIC = "investment/app/cuser/getdic.do";
+    //2.获取数据字典列表
+    public static final String GET_DIC_LIST = "investment/app/cuser/getdicList.do";
+
+    //6.基本信息填写
+    public static final String BASE_INFO = "investment/app/cuser/changeInformation.do";
+    //7.填写业务信息
+    public static final String BUSINESS_INFO="investment/app/cuser/changeBusiness.do";
     //登录
     public static final String LOGIN_URL = "investment/app/cuser/login.do";
     //获取验证码
-    public static final String SEND_SMS_CODE="investment/app/cuser/sendSMSCode.do";
+    public static final String SEND_SMS_CODE = "investment/app/cuser/sendSMSCode.do";
     //注册
-    public static final String REGISTER="investment/app/cuser/register.do";
+    public static final String REGISTER = "investment/app/cuser/register.do";
 
     /**
      * 获取对应的host

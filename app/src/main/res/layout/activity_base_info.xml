@@ -549,6 +549,7 @@
         <RelativeLayout
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:onClick="close"
             android:layout_marginLeft="10dp">
 
             <ImageView
@@ -595,6 +596,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:onClick="reset"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -609,6 +611,7 @@
                 android:background="#dddddd" />
 
             <TextView
+                android:onClick="confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

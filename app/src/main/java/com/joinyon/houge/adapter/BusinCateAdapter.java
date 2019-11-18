@@ -10,13 +10,36 @@ import android.widget.TextView;
 
 import com.joinyon.houge.R;
 import com.joinyon.houge.bean.DicListBean;
+import com.xusangbo.basemoudle.utils.ToastUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryAdapter extends BaseAdapter {
+public class BusinCateAdapter extends BaseAdapter {
     private List<DicListBean.ResultListBean> dataList;
     private LayoutInflater layoutInflater;
+    private Context context;
+    private List<Integer> integerList = new ArrayList<>();
+
     private int position = 0;
+
+    public void reset() {
+        integerList = new ArrayList<>();
+        for (DicListBean.ResultListBean bean : dataList) {
+            bean.setS(false);
+        }
+        notifyDataSetChanged();
+    }
+
+    public String getStrings() {
+        String content = " ";
+        for (DicListBean.ResultListBean bean : dataList) {
+            if (bean.isS()) {
+                content = content + bean.getKey() + ";";
+            }
+        }
+        return content.substring(0, content.length() - 1);
+    }
 
     public int getPosition() {
         return position;
@@ -26,9 +49,10 @@ public class CategoryAdapter extends BaseAdapter {
         this.position = position;
     }
 
-    public CategoryAdapter(Context context, List<DicListBean.ResultListBean> dataList) {
+    public BusinCateAdapter(Context context, List<DicListBean.ResultListBean> dataList) {
         this.dataList = dataList;
         layoutInflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @Override
@@ -48,7 +72,7 @@ public class CategoryAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         ViewHolder holder = null;
         if (view == null) {
             view = layoutInflater.inflate(R.layout.grid_item, null);
@@ -62,20 +86,35 @@ public class CategoryAdapter extends BaseAdapter {
 
         DicListBean.ResultListBean s = dataList.get(i);
         holder.text.setText(s.getValue());
-//        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-        if (i == position) {
+        if (s.isS()) {
             holder.relativeLayout.setSelected(true);
         } else {
             holder.relativeLayout.setSelected(false);
         }
+
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (integerList.size() < 3) {
+                    integerList.add(i);
+                    dataList.get(i).setS(true);
+                } else {
+                    ToastUtils.showShortToast(context, "最多只能选择三项");
+                }
+
+                notifyDataSetChanged();
+            }
+        });
+
+//        for (int j : integerList) {
+//            if (j == position) {
+//                holder.relativeLayout.setSelected(true);
+//            } else {
+//                holder.relativeLayout.setSelected(false);
+//            }
+//        }
         return view;
     }
-
 
     class ViewHolder {
         RelativeLayout relativeLayout;

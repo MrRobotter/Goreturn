@@ -43,8 +43,9 @@
         <activity android:name=".activity.GuideActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity"></activity>
-        <activity android:name=".activity.BaseInfoActivity">
-
+        <activity
+            android:name=".activity.BaseInfoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
         <activity android:name=".activity.BusinessInfoActivity">
 
@@ -63,10 +64,8 @@
         </activity>
         <activity
             android:name=".activity.ScanActivity"
-            android:theme="@style/AppTheme2">
-        </activity>
-        <activity android:name=".activity.SearchActivity">
-        </activity>
+            android:theme="@style/AppTheme2"></activity>
+        <activity android:name=".activity.SearchActivity"></activity>
         <activity android:name=".activity.MyQRcodeActivity">
 
         </activity>
