@@ -66,33 +66,35 @@
         android:layout_height="53dp"
         android:layout_marginLeft="16dp"
         android:gravity="center_vertical"
-        android:text="上传您的真实照片"
+        android:text="上传您的真实名片"
         android:textColor="@color/colorTip"
         android:textSize="15sp" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="250dp"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
-        android:background="@mipmap/dash_border"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:src="@mipmap/take_photo" />
+        android:background="@mipmap/dash_border">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
+            android:drawableTop="@mipmap/take_photo"
+            android:drawablePadding="@dimen/dp_10"
+            android:onClick="selectPic"
             android:text="点击拍摄/上传您的名片"
             android:textColor="@color/textColorNormal"
             android:textSize="@dimen/sp_15" />
-    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+    </RelativeLayout>
 
     <Button
         android:layout_width="match_parent"
@@ -106,5 +108,4 @@
         android:text="确定上传"
         android:textColor="@color/white"
         android:textSize="17sp" />
-
 </LinearLayout>

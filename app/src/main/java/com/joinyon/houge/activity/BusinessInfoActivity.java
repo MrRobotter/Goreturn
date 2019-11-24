@@ -218,13 +218,12 @@ public class BusinessInfoActivity extends BaseActivity<InfoPresenter, InfoModel>
         if (baseBean != null) {
             if (baseBean.getResultCode().equals("1")) {
                 SPHelper.setZCbz("3");
-                Intent intent = new Intent(this, IDCardIdentification.class);
+                Intent intent = new Intent(this, CardIdentification.class);
                 startActivity(intent);
             }
         } else {
             ToastUtils.showShortToast(this, "提交失败!");
         }
-
     }
 
     @Override

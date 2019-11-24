@@ -30,13 +30,25 @@ public class ApiConstants {
     //6.基本信息填写
     public static final String BASE_INFO = "investment/app/cuser/changeInformation.do";
     //7.填写业务信息
-    public static final String BUSINESS_INFO="investment/app/cuser/changeBusiness.do";
+    public static final String BUSINESS_INFO = "investment/app/cuser/changeBusiness.do";
+
+    //9.用户更换头像/名片认证、身份证正面、身份证反面
+    public static final String USER_TP_UPLOAD = "investment/app/cuser/user_tp_upload.do";
+    //朋友认证
+    public static final String ATTESTATION = "investment/app/cuser/attestation.do";
+    //13 获取资方/专家列表接口
+    public static final String GET_C_USER_LIST = "investment/app/cuser/getCUserList.do";
+    //14 获取资方/专家详情
+    public static final String READ_USER = "investment/app/cuser/ReadUser.do";
+
+    public static final String ADVERTISING_LIST = "investment/app/serve/getAdvertisingList.do";
     //登录
     public static final String LOGIN_URL = "investment/app/cuser/login.do";
     //获取验证码
     public static final String SEND_SMS_CODE = "investment/app/cuser/sendSMSCode.do";
     //注册
     public static final String REGISTER = "investment/app/cuser/register.do";
+
 
     /**
      * 获取对应的host

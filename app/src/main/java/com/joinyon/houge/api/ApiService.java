@@ -3,6 +3,8 @@ package com.joinyon.houge.api;
 
 import com.joinyon.houge.base.BaseBean;
 import com.joinyon.houge.base.RegisterBean;
+import com.joinyon.houge.bean.AdverListBean;
+import com.joinyon.houge.bean.BusinessListBean;
 import com.joinyon.houge.bean.DicListBean;
 import com.joinyon.houge.bean.LoginBean;
 
@@ -11,6 +13,7 @@ import io.reactivex.Flowable;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -69,4 +72,36 @@ public interface ApiService {
                                       @Field("YWAL") String DWJC//业务案例
     );
 
+    @FormUrlEncoded
+    @POST(ApiConstants.USER_TP_UPLOAD)
+    Flowable<BaseBean> userTpUpload(
+            @Field("TP") String TP,
+            @Field("TPLX") String TPLX,
+            @Field("APPUSER_ID") String APPUSER_ID,
+            @Field("ZCBZ") String ZCBZ // 注册步骤 1-填写基本信息  2-填写业务信息 3-上传名片 4-上传身份证 5-朋友认证，6，已完成  当刚注册好进来时加业务信息是，传值4，5，6
+    );
+
+
+    @FormUrlEncoded
+    @POST(ApiConstants.GET_C_USER_LIST)
+    Flowable<BusinessListBean> getCuserList(
+            @Field("YHLX") String YHLX,//1-资方  2-项目方  3-专家  4-平台方
+            @Field("keywords") String keywords,//关键字搜索
+            @Field("PXLX") String PXLX,//排序类型  1-收藏量 2-转发量  3-点评分  4浏览数
+            @Field("GZLY") String GZLY,//关注领域  当多选时 以“；”分割传递到后台
+            @Field("YWQY") String YWQY,//当多选时 以“；”分割传递到后台
+            @Field("YWLX") String YWLX,//当多选时 以“；”分割传递到后台
+            @Field("YWJD") String YWJD,//务阶段  当多选时 以“；”分割传递到后台
+            @Field("SFTJ") String SFTJ,//是否推荐  1-推荐 2-不推荐
+            @Field("currentPage") String currentPage////页码
+    );
+
+    @GET(ApiConstants.GET_C_USER_LIST)
+    Flowable<BusinessListBean> getCuserList();
+
+    @FormUrlEncoded
+    @POST(ApiConstants.ADVERTISING_LIST)
+    Flowable<AdverListBean> getAdvertisingLis(
+            @Field("SHOW_TYPE") String SHOW_TYPE//所属模块 1:资方 2、项目 3、活动  4、专家
+    );
 }

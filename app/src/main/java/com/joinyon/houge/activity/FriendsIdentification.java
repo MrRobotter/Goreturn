@@ -6,6 +6,9 @@ import android.view.View;
 import com.joinyon.houge.R;
 import com.xusangbo.basemoudle.base.BaseActivity;
 
+/**
+ * 朋友認證
+ */
 public class FriendsIdentification extends BaseActivity {
     @Override
     protected void getBundleExtras(Bundle extras) {

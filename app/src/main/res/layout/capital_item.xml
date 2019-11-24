@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="90dp"
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/llItem"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/ivAvatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="19dp"
             android:src="@mipmap/icon_man_avatar" />
@@ -61,7 +64,7 @@
                 android:id="@+id/llTags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
             </LinearLayout>
@@ -75,7 +78,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/tags_selecter"
             android:padding="3dp"
-            android:text="已认证"
+            android:text="未认证"
             android:textColor="@color/colorPrimary"
             android:textSize="10sp" />
 

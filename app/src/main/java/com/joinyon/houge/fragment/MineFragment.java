@@ -12,7 +12,11 @@ import com.joinyon.houge.activity.MyQRcodeActivity;
 import com.joinyon.houge.activity.ScanActivity;
 import com.joinyon.houge.adapter.CategoryAdapter;
 import com.joinyon.houge.adapter.MineToolsAdapter;
+import com.joinyon.houge.base.BaseBean;
 import com.joinyon.houge.bean.MineToolsBean;
+import com.joinyon.houge.mvp.contract.MineContract;
+import com.joinyon.houge.mvp.model.MineModel;
+import com.joinyon.houge.mvp.presenter.MinePresenter;
 import com.xusangbo.basemoudle.base.BaseFragment;
 
 import java.util.ArrayList;
@@ -20,7 +24,7 @@ import java.util.List;
 
 /**
  */
-public class MineFragment extends BaseFragment implements View.OnClickListener {
+public class MineFragment extends BaseFragment<MinePresenter, MineModel> implements MineContract.View, View.OnClickListener {
     private MainActivity activity;
     private GridView gridView;
     private List<MineToolsBean> dataList = new ArrayList<>();
@@ -103,6 +107,26 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             default:
                 break;
         }
+
+    }
+
+    @Override
+    public void onUserTpUpload(BaseBean bean) {
+
+    }
+
+    @Override
+    public void showLoading(String title) {
+
+    }
+
+    @Override
+    public void stopLoading() {
+
+    }
+
+    @Override
+    public void showErrorTip(String msg) {
 
     }
 }

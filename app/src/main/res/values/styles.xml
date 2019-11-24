@@ -23,4 +23,11 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <declare-styleable name="ImageViewPlus">
+        <attr name="type" />
+        <attr name="borderColor" />
+        <attr name="borderWidth2" />
+        <attr name="rectRoundRadius" />
+    </declare-styleable>
 </resources>

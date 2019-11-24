@@ -114,6 +114,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
                 SPHelper.setUid(bean.getAPPUSER_ID());
                 String zcbz = bean.getZCBZ();
                 SPHelper.setZCbz(zcbz);
+                SPHelper.setName(bean.getXM());
+                SPHelper.setPhone(bean.getSJHM());
+                // SPHelper.
 
                 if (zcbz.equals("1")) {//1-填写基本信息
                     Intent intent = new Intent(this, BaseInfoActivity.class);
